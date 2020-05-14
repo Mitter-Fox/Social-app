@@ -1,0 +1,28 @@
+.camera {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    background: black;
+    display: none;
+}
+
+.center {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterstrip {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.active {
+    border: 2px solid black;
+}
+
+.content {
+    margin-top: 30px;
+    padding-top: 20px;
+}

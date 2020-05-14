@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Upload Images</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <app-loading *ngIf="busy"></app-loading>
+
+  <div class="center" *ngIf="!busy">
+    <div class="camera"></div>
+    <!-- <ion-button (click)="takePhoto()">Take Photo</ion-button> -->
+    <input style="display: none" type="file" (change)="fileChanged($event)" #fileInput/>
+
+    <ion-button  shape="round" *ngIf="!url" (click)="fileInput.click()" fill="outline">Upload</ion-button>
+    
+    <div *ngIf="url" class="content">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-img src="https://ucarecdn.com/{{ url }}/-/preview/{{ activeEffect }}/"></ion-img>
+            <ion-card-content>
+              <ion-textarea placeholder="Enter a description" [(ngModel)]="desc"></ion-textarea>
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col [class.active]="activeEffect == effects.effect1" (click)="setSelected('effect1')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/"></ion-img> <!--filter 1-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect2" (click)="setSelected('effect2')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect2 }}"></ion-img> <!--filter 2-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect3" (click)="setSelected('effect3')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect3 }}"></ion-img> <!--filter 3-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect4" (click)="setSelected('effect4')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect4 }}"></ion-img> <!--filter 4-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect5" (click)="setSelected('effect5')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect5 }}"></ion-img> <!--filter 5-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect6" (click)="setSelected('effect6')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect6 }}"></ion-img> <!--filter 6--> 
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect7" (click)="setSelected('effect7')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect7 }}"></ion-img> <!--filter 7-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect8" (click)="setSelected('effect8')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect8 }}"></ion-img> <!--filter 8-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect9" (click)="setSelected('effect9')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect9 }}"></ion-img> <!--filter 9-->
+          </ion-col>
+          <ion-col [class.active]="activeEffect == effects.effect10" (click)="setSelected('effect10')">
+            <ion-img src="https://ucarecdn.com/{{ url }}/{{ scaleCrop }}/{{ effects.effect10 }}"></ion-img> <!--filter 10-->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card-content>
+              <ion-button shape="round" color="primary" (click)="createPost()">POST</ion-button>
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="noFace">
+          <ion-col size=12>
+            <ion-card color="danger">
+              <ion-card-content>
+                <ion-card-subtitle>
+                  Tip:
+                </ion-card-subtitle>
+                Images with faces perform 150 times better :)
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!noFace">
+          <ion-col size=12>
+            <ion-card color="success">
+              <ion-card-content>
+                <ion-card-subtitle>
+                  Tip:
+                </ion-card-subtitle>
+                Some people make the world special by just being in it ❤
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
