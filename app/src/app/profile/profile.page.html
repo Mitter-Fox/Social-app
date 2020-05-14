@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <app-loading *ngIf="!posts"></app-loading>
+
+  <div id="profile-info" *ngIf="username">
+    <ion-grid>
+      <ion-row style="height: 130px">
+        <ion-col size="4" class="user-image">
+            <img class="profile-pic" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/" />
+        </ion-col>
+        <ion-col size="8" style="height: 30px">
+            <ion-card-title>{{ username }}</ion-card-title>
+            <ion-button expand="block" color="secondary" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div style="justify-content: center; align-items: center;">
+    <hr>
+      <ion-card-header slot="center" class="label">USER POSTS</ion-card-header>
+    <hr>
+  </div>
+  <div id="images" *ngIf="posts">
+    <div class="image" *ngFor="let post of posts">
+      <ion-img class="main-image" (click)="goTo(post)" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/"></ion-img>
+    </div>
+  </div>
+</ion-content>
